@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>BMEAutSoft Node JS test</title>
+</head>
+<body>
+<div>
+    <span>Server state: </span>
+    <span id="serverStateSpan"></span>
+</div>
+<script>
+    function httpGet(theUrl)
+    {
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open( "GET", theUrl, false );
+        xmlHttp.send( null );
+        document.getElementById('serverStateSpan').innerHTML = JSON.parse(xmlHttp.responseText).state;
+        return xmlHttp.responseText;
+    }
+
+    httpGet('/serverState');
+</script>
+</body>
+</html>
